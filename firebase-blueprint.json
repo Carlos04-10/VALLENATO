@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Stores user profile information and roles.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string", "format": "uri" },
+        "role": { "type": "string", "enum": ["customer", "owner", "admin"], "description": "User role in the platform" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "restaurants": {
+      "title": "Restaurant",
+      "description": "Details of a restaurant on the platform.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "cuisine": { "type": "string" },
+        "rating": { "type": "number" },
+        "deliveryTime": { "type": "string" },
+        "deliveryFee": { "type": "number" },
+        "image": { "type": "string", "format": "uri" },
+        "ownerUid": { "type": "string" },
+        "isOpen": { "type": "boolean" }
+      },
+      "required": ["name", "ownerUid"]
+    },
+    "orders": {
+      "title": "Order",
+      "description": "Customer orders.",
+      "type": "object",
+      "properties": {
+        "customerUid": { "type": "string" },
+        "restaurantId": { "type": "string" },
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "preparing", "on_the_way", "delivered", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "deliveryAddress": { "type": "string" }
+      },
+      "required": ["customerUid", "restaurantId", "items", "total", "status"]
+    },
+    "menuItems": {
+      "title": "Menu Item",
+      "description": "A dish or item in a restaurant's menu.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "image": { "type": "string", "format": "uri" },
+        "restaurantId": { "type": "string" },
+        "isAvailable": { "type": "boolean" },
+        "isArchived": { "type": "boolean" }
+      },
+      "required": ["name", "price", "category", "restaurantId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profile documents"
+    },
+    "/restaurants/{restaurantId}": {
+      "schema": "restaurants",
+      "description": "Restaurant details"
+    },
+    "/orders/{orderId}": {
+      "schema": "orders",
+      "description": "Order history"
+    },
+    "/menuItems/{itemId}": {
+      "schema": "menuItems",
+      "description": "Restaurant menu items"
+    }
+  }
+}

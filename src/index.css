@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", sans-serif;
+
+  --color-primary: #a33700;
+  --color-primary-dim: #8f2f00;
+  --color-primary-container: #ff7943;
+  --color-on-primary: #ffefeb;
+  --color-on-primary-container: #441200;
+
+  --color-secondary: #785500;
+  --color-secondary-container: #ffc965;
+  --color-on-secondary-container: #5f4200;
+
+  --color-tertiary: #006a35;
+  --color-tertiary-container: #6bfe9c;
+  --color-on-tertiary-container: #005f2f;
+
+  --color-background: #fff4f0;
+  --color-on-surface: #4b240a;
+  --color-on-surface-variant: #815032;
+
+  --color-surface-container-low: #ffede5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-highest: #ffd4bd;
+  --color-surface-container: #ffe3d4;
+  --color-surface-bright: #fff4f0;
+  --color-surface-dim: #ffc9ac;
+
+  --color-outline-variant: #dd9f7c;
+
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+}
+
+.dark {
+  --color-primary: #ffb596;
+  --color-primary-dim: #ff8d5c;
+  --color-primary-container: #8f2f00;
+  --color-on-primary: #5f1b00;
+  --color-on-primary-container: #ffdbcf;
+
+  --color-secondary: #ffba28;
+  --color-secondary-container: #5f4200;
+  --color-on-secondary-container: #ffdf9e;
+
+  --color-tertiary: #4ee182;
+  --color-tertiary-container: #005227;
+  --color-on-tertiary-container: #6eff9f;
+
+  --color-background: #1a110d;
+  --color-on-surface: #f1dfd8;
+  --color-on-surface-variant: #d8c2b8;
+
+  --color-surface-container-low: #231915;
+  --color-surface-container-lowest: #140c09;
+  --color-surface-container-highest: #3e2e28;
+  --color-surface-container: #2d211c;
+  --color-surface-bright: #3e2e28;
+  --color-surface-dim: #1a110d;
+
+  --color-outline-variant: #53433c;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
